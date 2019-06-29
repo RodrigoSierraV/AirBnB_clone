@@ -1,12 +1,16 @@
 #!/usr/bin/python3
+"""File for BaseModel"""
 import uuid
 import datetime
 import time
+from models import storage
 
 
 class BaseModel:
+    """Class for BaseModel"""
 
     def __init__(self, *args, **kwargs):
+        """It initializes the variables using args and kwargs"""
 
         if 'id' in kwargs:
             self.id = kwargs['id']
@@ -22,13 +26,17 @@ class BaseModel:
             self.updated_at = datetime.datetime.now()
 
     def __str__(self):
+        """Function that allows to print the info of the model"""
         return '[{}] ({}) {}'.format(
                 self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
+        """Function that updates new information"""
         self.updated_at = datetime.datetime.now()
+        storage.save()
 
     def to_dict(self):
+        """Function returns a dictionary containing all keys/values"""
         dictionary = self.__dict__
         dictionary['__class__'] = self.__class__.__name__
         dictionary['created_at'] = self.created_at.isoformat()
