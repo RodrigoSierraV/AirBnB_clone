@@ -1,4 +1,5 @@
-import models.engine.file_storage as f_storage
+from models.engine import file_storage
+from models.base_model import BaseModel
 
-storage = f_storage.FileStorage()
+storage = file_storage.FileStorage()
 storage.reload()
