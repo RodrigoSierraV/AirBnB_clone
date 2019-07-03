@@ -2,6 +2,7 @@
 import cmd, sys
 from models.base_model import BaseModel
 import models
+import shlex
 
 class HBNBCommand(cmd.Cmd):
 
@@ -79,24 +80,23 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """ Updates an instance based on the class name and id by adding or
             updating attribute"""
-        commands = arg.split()
+        commands = shlex.split(arg)
         if len(commands) == 0:
             print('** class name missing **')
         elif commands[0] != 'BaseModel':
             print("** class doesn't exist **")
         elif len(commands) == 1:
             print("** instance id missing **")
-        elif len(commands) > 1:
-            instance = commands[0] + '.' + commands[1]
-            if instance not in models.storage.all():
-                print('** no instance found **')
+        elif commands[0] + '.' + commands[1] not in models.storage.all():
+            print('** no instance found **')
         elif len(commands) == 2:
             print('** attribute name missing **')
         elif len(commands) == 3:
             print('** value missing **')
         else:
+            instance = commands[0] + '.' + commands[1]
             setattr(models.storage.all()[instance], commands[2], commands[3])
-            models.storage.all().save()
+            models.storage.all()[instance].save()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
