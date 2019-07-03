@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-import cmd, sys
+import cmd
+import sys
 from models.base_model import BaseModel
 import models
 import shlex
+from models.user import User
 
 class HBNBCommand(cmd.Cmd):
 
