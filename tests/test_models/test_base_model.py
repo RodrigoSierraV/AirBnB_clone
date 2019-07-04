@@ -74,7 +74,7 @@ class TestBaseModel(unittest.TestCase):
         """Test to verify creation of attributes - name"""
         self.test1.name = "Holberton"
         self.assertEqual(self.test1.name, "Holberton")
-        
+
     def test_creation2(self):
         """Test to verify creation of attributes - number"""
         self.test1.number = 89
