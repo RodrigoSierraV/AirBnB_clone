@@ -117,8 +117,14 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, arg):
         """Method to handle unknown arguments"""
+        num_of_instances = 0
         if arg[-6:] == '.all()' and arg[:-6] in self.classes:
             self.do_all(arg[:-6])
+        elif arg[-8:] == '.count()' and arg[:-8] in self.classes:
+            for key in models.storage.all():
+                if arg[:-8] in key:
+                    num_of_instances += 1
+            print(num_of_instances)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
