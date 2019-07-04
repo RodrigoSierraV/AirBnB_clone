@@ -125,6 +125,10 @@ class HBNBCommand(cmd.Cmd):
                 if arg[:-8] in key:
                     num_of_instances += 1
             print(num_of_instances)
+        elif 'show' in arg and '-' in arg:
+            list_arg = arg.split('"')
+            print(list_arg[0][:-6] +' ' +list_arg[1])
+            self.do_show(list_arg[0][:-6] + ' ' + list_arg[1])
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
