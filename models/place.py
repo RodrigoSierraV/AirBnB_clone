@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 from models.base_model import BaseModel
+"""File for Place"""
 
 
 class Place(BaseModel):
+    """Class for Place, creates attributes"""
 
     city_id = ''
     user_id = ''
