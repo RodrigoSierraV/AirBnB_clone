@@ -127,8 +127,10 @@ class HBNBCommand(cmd.Cmd):
             print(num_of_instances)
         elif 'show' in arg and '-' in arg:
             list_arg = arg.split('"')
-            print(list_arg[0][:-6] +' ' +list_arg[1])
             self.do_show(list_arg[0][:-6] + ' ' + list_arg[1])
+        elif 'destroy' in arg and '-' in arg:
+            list_arg = arg.split('"')
+            self.do_destroy(list_arg[0][:-9] + ' ' + list_arg[1])
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
