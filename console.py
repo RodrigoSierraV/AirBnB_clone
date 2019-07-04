@@ -5,10 +5,17 @@ from models.base_model import BaseModel
 import models
 import shlex
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
+
+    classes = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
 
     def do_EOF(self, line):
         """Command to exit the Interpreter typing EOF"""
@@ -24,10 +31,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """Creates a new instance of BaseModel"""
+        commands = shlex.split(arg)
         if len(arg) == 0:
             print('** class name missing **')
-        elif arg == 'BaseModel':
-            new_instance = BaseModel()
+        elif arg in self.classes:
+            new_instance = eval(commands[0])()
             new_instance.save()
             print(new_instance.id)
         else:
@@ -36,10 +44,10 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """ Prints the string representation of an
             instance based on the class name and id"""
-        commands = arg.split()
+        commands = shlex.split(arg)
         if len(commands) == 0:
             print('** class name missing **')
-        elif commands[0] != 'BaseModel':
+        elif commands[0] not in self.classes:
             print("** class doesn't exist **")
         elif len(commands) == 1:
             print("** instance id missing **")
@@ -52,10 +60,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """ Deletes an instance based on the class name and id"""
-        commands = arg.split()
+        commands = shlex.split(arg)
         if len(commands) == 0:
             print('** class name missing **')
-        elif commands[0] != 'BaseModel':
+        elif commands[0] not in self.classes:
             print("** class doesn't exist **")
         elif len(commands) == 1:
             print("** instance id missing **")
@@ -69,12 +77,19 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Prints all string representation of all instances"""
-        commands = arg.split()
-        if len(commands) == 0 or commands[0] == 'BaseModel':
+        commands = shlex.split(arg)
+        if len(commands) == 0:
             obj_list = []
             for key in models.storage.all():
                 string = str(models.storage.all()[key])
                 obj_list.append(string)
+            print(obj_list)
+        elif commands[0] in self.classes:
+            obj_list = []
+            for key in models.storage.all():
+                if commands[0] in key:
+                    string = str(models.storage.all()[key])
+                    obj_list.append(string)
             print(obj_list)
         else:
             print("** class doesn't exist **")
@@ -85,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
         commands = shlex.split(arg)
         if len(commands) == 0:
             print('** class name missing **')
-        elif commands[0] != 'BaseModel':
+        elif commands[0] not in self.classes:
             print("** class doesn't exist **")
         elif len(commands) == 1:
             print("** instance id missing **")
