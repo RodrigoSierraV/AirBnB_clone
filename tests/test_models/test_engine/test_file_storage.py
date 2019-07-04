@@ -7,6 +7,7 @@ import pep8
 BaseModel = models.base_model.BaseModel
 FileStorage = models.engine.file_storage.FileStorage
 
+
 class TestDocumentation(unittest.TestCase):
     """Check for existence of documentation"""
 
@@ -59,7 +60,7 @@ class TestBaseModel(unittest.TestCase):
         """Test to verify creation of attributes - name"""
         self.test1.name = "Holberton"
         self.assertEqual(self.test1.name, "Holberton")
-        
+
     def test_creation2(self):
         """Test to verify creation of attributes - number"""
         self.test1.number = 89
