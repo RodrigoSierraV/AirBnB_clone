@@ -128,7 +128,7 @@ class HBNBCommand(cmd.Cmd):
         elif 'show' in arg:
             list_arg = arg.split('"')
             self.do_show(list_arg[0][:-6] + ' ' + list_arg[1])
-        elif 'destroy' in arg and '-' in arg:
+        elif 'destroy' in arg:
             list_arg = arg.split('"')
             self.do_destroy(list_arg[0][:-9] + ' ' + list_arg[1])
 
