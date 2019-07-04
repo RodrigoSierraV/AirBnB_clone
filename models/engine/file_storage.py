@@ -2,7 +2,12 @@
 """File for converting into json and from json"""
 import json
 from models.base_model import BaseModel
-
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class FileStorage:
     """Class for FileStorage to do json convertion"""
@@ -16,6 +21,7 @@ class FileStorage:
 
     def new(self, obj):
         """Sets in __objects the obj with key <obj class name>.id"""
+
         self.__objects[obj.__class__.__name__ + "." + obj.id] = obj
 
     def save(self):
