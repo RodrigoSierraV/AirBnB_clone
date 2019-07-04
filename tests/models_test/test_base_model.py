@@ -16,7 +16,7 @@ class Test_pep8(unittest.TestCase):
         f_file_storage = "models/engine/file_storage.py"
         check = pep.check_files([f_base_model, f_user, f_file_storage])
         self.assertEqual(check.total_errors, 0,
-                        "Found code style errors (and warning).")
+                         "Found code style errors (and warning).")
 
 
 class Test_BaseModel(unittest.TestCase):
