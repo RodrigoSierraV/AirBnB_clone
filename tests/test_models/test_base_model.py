@@ -5,7 +5,26 @@ from models.base_model import BaseModel
 import pep8
 
 
-class Test_pep8(unittest.TestCase):
+class TestDocumentation(unittest.TestCase):
+    """Check for existence of documentation"""
+
+    def test_doc1(self):
+        """Check documentation in module"""
+        assert models.base_model.__doc__ is not None
+
+    def test_doc2(self):
+        """Check documentation in class"""
+        assert BaseModel.__doc__ is not None
+
+    def test_doc3(self):
+        """Check documentation in methods"""
+        methods = ["__init__", "__str__", "to_dict", "save"]
+        for key in BaseModel.__dict__.keys():
+            if key in methods:
+                assert key.__doc__ is not None
+
+
+class TestPep8(unittest.TestCase):
     """Class that checks pep8 for all files"""
 
     def test_pep8(self):
@@ -16,10 +35,10 @@ class Test_pep8(unittest.TestCase):
         f_file_storage = "models/engine/file_storage.py"
         check = pep.check_files([f_base_model, f_user, f_file_storage])
         self.assertEqual(check.total_errors, 0,
-                        "Found code style errors (and warning).")
+                         "Found code style errors (and warning).")
 
 
-class Test_BaseModel(unittest.TestCase):
+class TestBaseModel(unittest.TestCase):
     """Class that contains all tests for BaseModel"""
 
     def setUp(self):
@@ -50,6 +69,26 @@ class Test_BaseModel(unittest.TestCase):
     def test_dictionary(self):
         """Test for creation of dictionary"""
         self.assertIsInstance(self.test1json, dict)
+
+    def test_creation1(self):
+        """Test to verify creation of attributes - name"""
+        self.test1.name = "Holberton"
+        self.assertEqual(self.test1.name, "Holberton")
+        
+    def test_creation2(self):
+        """Test to verify creation of attributes - number"""
+        self.test1.number = 89
+        self.assertEqual(self.test1.number, 89)
+
+    def test_attributes(self):
+        """Test the creation of attributes in init"""
+        comp = str(self.test1)
+        attr = ['BaseModel', 'id', 'created_at', 'updated_at']
+        counter = 0
+        for a in attr:
+            if a in attr:
+                counter += 1
+        self.assertTrue(counter == 4)
 
 if __name__ == '__main__':
     unittest.main()
