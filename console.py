@@ -115,5 +115,10 @@ class HBNBCommand(cmd.Cmd):
             setattr(models.storage.all()[instance], commands[2], commands[3])
             models.storage.all()[instance].save()
 
+    def default(self, arg):
+        """Method to handle unknown arguments"""
+        if arg[-6:] == '.all()' and arg[:-6] in self.classes:
+            self.do_all(arg[:-6])
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
