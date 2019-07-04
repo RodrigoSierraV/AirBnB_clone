@@ -7,6 +7,7 @@ import pep8
 BaseModel = models.base_model.BaseModel
 State = models.amenity.Amenity
 
+
 class TestDocumentation(unittest.TestCase):
     """Check for existence of documentation"""
 
