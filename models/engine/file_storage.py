@@ -15,6 +15,8 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
+    classes = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place',
+               'Review']
 
     def all(self):
         """Returns the dictionary __objects"""
@@ -38,9 +40,7 @@ class FileStorage:
         try:
             with open(self.__file_path, "r") as f:
                 data = json.load(f)
-
             for key, value in data.items():
-                self.__objects[key] = BaseModel(value)
-            return self.__objects
+                self.__objects[key] = eval(value["__class__"])(**value)
         except:
             pass
