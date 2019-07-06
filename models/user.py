@@ -2,6 +2,7 @@
 """Module to host the class User"""
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
     """Class that describes user's attributes"""
 

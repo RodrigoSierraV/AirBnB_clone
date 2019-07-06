@@ -10,12 +10,15 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+"""Module to set up the console of the project"""
+
 
 class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
-    classes = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
+    classes = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place',
+               'Review']
 
     def do_EOF(self, line):
         """Command to exit the Interpreter typing EOF"""
