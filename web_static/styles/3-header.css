@@ -1,12 +1,12 @@
 header {
 width: 100%;
 border-bottom: 1px ridge #CCCCCC;
-height: 70px
+height: 70px;
 }
 
 .logo {
-width: 80px;
-height: 40px;
+width: 12%;
+height: 100%;
 padding-left: 20px;
-background-image: url("../images/logo.png") center;
+background: url("../images/logo.png") no-repeat center;
 }
