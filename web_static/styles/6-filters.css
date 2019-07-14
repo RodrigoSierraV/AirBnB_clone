@@ -68,8 +68,26 @@ display: block;
 line-height: 0;
 padding-bottom: 20px;
 padding-left: 30px;
+padding-top: 20px;
 margin-left: -41px;
 margin-top: -4px;
 width: 100%;
 display: block;
+}
+
+.locations:hover .popover{
+margin-left: -41px;
+margin-top: -4px;
+display: block;
+}
+
+.locations ul {
+list-style-type: none;
+padding-left: 20px;
+padding-bottom: 10px;
+width: 108%;
+}
+
+.locations h2 {
+font-size: 16px;
 }
