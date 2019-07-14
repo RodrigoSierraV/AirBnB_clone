@@ -50,3 +50,26 @@ font-weight: 400;
 font-size: 14px;
 margin-top: 5px;
 }
+
+.popover {
+display: none;
+background-color: #FAFAFA;
+border: 1px solid #DDDDDD;
+border-radius: 4px;
+}
+
+.popover a {
+text-align: left;
+padding: 12px;
+display: block;
+}
+
+.amenities:hover .popover{
+line-height: 0;
+padding-bottom: 20px;
+padding-left: 30px;
+margin-left: -41px;
+margin-top: -4px;
+width: 100%;
+display: block;
+}
