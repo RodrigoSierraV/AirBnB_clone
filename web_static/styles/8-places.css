@@ -34,5 +34,25 @@ height: 60px;
 font-size: 30px;
 text-align: center;
 position: absolute;
-right: 0;
+
+}
+
+.information {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+.max_guest {
+width: 100px;
+background: url(../images/icon_group.png) no-repeat center;
+}
+
+.number_rooms {
+width: 100px;
+background: url(../images/icon_bed.png) no-repeat center;
+}
+
+.number_bathrooms {
+width: 100px;
+background: url(../images/icon_bath.png) no-repeat center;
 }
