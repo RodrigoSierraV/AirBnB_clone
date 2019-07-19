@@ -86,3 +86,7 @@ right: 5%;
 .max_guest p, .number_rooms p, .number_bathrooms p{
 margin-top: 60%;
 }
+
+.container {
+margin-bottom: 50px;
+}
